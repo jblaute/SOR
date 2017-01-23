@@ -1,0 +1,18 @@
+découpage fonctionnel
+(priorité) 
+- regular_fileImpl
+  *read jb
+  *writejm
+  *seekjb
+  *close jm
+ 
+-directoryImpl
+  *open_regular jm
+  *open_directory jb
+  *create_regular jb
+  *create_directory jb/jm 
+  *list_files jm
+  *delete_file jb
+  
+-file_list
+  *next_one jb/jm  
