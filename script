@@ -1,0 +1,6 @@
+#!/bin/bash
+source corba.zsh
+make clean
+make
+echo jaco files.Serveur
+

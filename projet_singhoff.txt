@@ -1,0 +1,60 @@
+ Exercice supplémentaire 5 : mise en œuvre d’un système de fichier distant
+
+
+Dans cet projet, on vous demande d'implanter un serveur qui permet d'accèder via CORBA à un mini système de fichiers. Les interfaces IDL de ce serveur sont les suivantes.
+
+Le serveur permet de créer, lire ou écrire dans des fichiers qui peuvent être, soit des fichiers réguliers, soit des répertoires. On suppose que les fichiers réguliers sont des fichiers textes. Chaque fichier accessible par le serveur l'est au travers d'objets CORBA. Pour mettre à disposition ce système de fichiers, deux interfaces devront être implantées :
+
+    L'interface regular_file qui permet aux clients de manipuler un fichier régulier particulier.
+    L'interface directory qui permet aux clients de manipuler un répertoire donné. A partir d'un objet CORBA représentant un répertoire donné, il est possible d'accéder aux fichiers réguliers et aux sous répertoires qu'il contient.
+
+
+
+Un client qui souhaite manipuler des fichiers doit donc obtenir des références d'objets CORBA représentant ces dits fichiers.
+
+L'interface regular_file contient les méthodes suivantes :
+
+    La méthode read. Cette méthode est une demande de lecture du fichier de size caractères. Le résultat de la lecture est déposé dans la chaîne de caractères data et la méthode retourne le nombre de caractères effectivement lus. Chaque objet de type regular_file mémorise un offset à partir duquel les lectures et écritures doivent être effectuées.
+    La méthode write. Cette méthode permet d'effectuer une écriture dans le fichier de size caractères. La chaîne de caractères à écrire dans le fichier est contenue dans data. La méthode retourne le nombre de caractère effectivement écrits.
+    La méthode seek positionne l'offset du fichier à la position new_offset.
+    Enfin, la méthode close permet de fermer le fichier. Tout accès au fichier grâce à la référence d'objet à partir de laquelle la méthode close a été invoquée devient alors interdit.
+
+
+
+L'interface directory contient les méthodes suivantes :
+
+    L'attribut number_of_file permet au client de connaître le nombre de fichiers réguliers et de sous répertoires inclus dans le répertoire associé à un objet CORBA de type directory (répertoire que nous désignerons dans la suite par le terme de "répertoire courant").
+    La méthode open_regular_file permet d'ouvrir un fichier régulier existant dans le répertoire courant. Grâce à cette méthode, le client obtient une référence d'objet CORBA associée au fichier régulier ouvert. name est le nom du fichier régulier à ouvrir et m le mode d'ouverture du fichier. Le fichier peut être ouvert :
+        En lecture seule (mode read_only) : l'offset est alors positionné au début du fichier.
+        En écriture seule (modes write_append et write_trunc). Avec le mode write_append, l'offset est positionné sur la fin de fichier. Ce mode permet d'ajouter de nouvelles données dans le ficher. Avec le mode write_trunc, l'offset est positionné au début du fichier et le fichier est vidé à l'ouverture. Ce mode permet de réinitialiser le contenu d'un fichier régulier.
+        En lecture et en écriture (mode read_write). L'offset est alors positionné sur le début du fichier mais le fichier n'est pas vidé. Les données qui seront écrites remplaceront alors celles précédemment mémorisées.
+    La méthode open_directory permet d'obtenir une référence sur un objet CORBA associé à un sous répertoire existant dans le répertoire courant. name est le nom du sous répertoire à ouvrir.
+    La méthode create_regular_file permet de créer, dans le répertoire courant, un nouveau fichier régulier dont le nom est name.
+    La méthode create_directory permet de créer, dans le répertoire courant, un nouveau sous répertoire dont le nom est name.
+    La méthode delete_file supprime le sous répertoire ou le fichier régulier du répertoire courant dont le nom est name.
+    La méthode list_files permet d'obtenir la liste des fichiers réguliers et des sous répertoires contenus par le répertoire courant. La méthode retourne le nombre total de fichiers réguliers et de sous répertoires contenus dans le répertoire courant. La référence d'objet CORBA de type file_list est un itérateur permettant d'obtenir, par appel successif à la méthode next_one, les noms des différents sous répertoires et fichiers réguliers du répertoire courant. Lorsque la méthode next_one retourne false, la liste de sous répertoires et de fichiers réguliers a été entièrement parcourue. A chaque appel de la méthode next_one, une structure directory_entry renseigne pour chaque fichier son nom ainsi que son type (répertoire ou fichier régulier).
+
+ 
+Travail à faire :
+
+    Proposez un serveur qui implante les interfaces directory, regular_file et file_list. Les méthodes doivent tenir compte des conditions d'erreur suivantes :
+        Accès à un fichier inexistant (exception no_such_file).
+        Lecture sur un fichier dont l'offset pointe après le dernier caractère du fichier (exception end_of_file).
+        Demande de positionnement d'un offset erroné (exception invalid_offset).
+        Demande d'opération impossible compte tenu du type de fichier. (exception invalid_operation)
+        Demande de création d'un fichier déjà existant (exception already_exist).
+
+
+
+Vous êtes libre d'ajouter d'autres exceptions si vous estimez que certains cas d'erreurs doivent être traités. Par ailleurs, vous pouvez étendre l'interface IDL donné, mais votre serveur doit au minimum offrir les services décrits ci-dessus.
+
+Vous donnerez un client illustrant les différents services offerts par votre serveur: ce client donc faire office de jeu de test.
+
+Vous pouvez travailler seul ou en binôme. Le projet est à rendre par mail à Frank Singhoff pour le 17 mars au plus tard. On vous demande de faire un rapport. Ce rapport de 3 pages maximum doit contenir le mode d'emploi de votre logiciel, ses fonctionnalités ainsi que sa conception (structure du logiciel). Vous serez évalué sur :
+
+    La qualité du logiciel réalisé : ses fonctionnalités, la propreté du code, sa conception (structure), sa fiabilité.
+    Le niveau de détail de votre jeu de test, et donc du client proposé.
+    La qualité du rapport.
+    Sur la démonstration que vous effectuerez la semaine du 17 mars. 
+
+
