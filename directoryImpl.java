@@ -3,6 +3,7 @@ package files;
 
 import org.omg.CORBA.*;
 import java.lang.*;
+import java.util.ArrayList;
 
 
 public class directoryImpl extends directoryPOA
@@ -10,8 +11,12 @@ public class directoryImpl extends directoryPOA
 
     private int number_of_file;
     private arrayList<directory_entry> liste = new arrayList()<directory_entry>;
-    
-    public void directoryImpl(){
+   
+    public void directoryImpl(directory_entry parent){
+     
+     listEntry = new ArrayList<directory_entry>();
+     number_of_file = 0;
+     ;
     }
 
     public void open_regular_file(regular_fileHolder r, String name, mode m) {
@@ -27,6 +32,10 @@ public class directoryImpl extends directoryPOA
     }
 
     public void create_directory(directoryHolder f, String name){
+     // f.listEntry.add(
+    
+    
+    
  //       raises (already_exist);
     }
 
