@@ -9,6 +9,7 @@ public class directoryImpl extends directoryPOA
 {
 
     private int number_of_file;
+    private arrayList<directory_entry> liste = new arrayList()<directory_entry>;
     
     public void directoryImpl(){
     }
