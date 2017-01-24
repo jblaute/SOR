@@ -58,6 +58,12 @@ public class Serveur {
 	    // actives ainsi que ceux qui le seront par la suite
 	    // La methode "orb.run" est bloquante
 	    ////////////////////////////////////////////////////////////////
+	    
+	    /* création de la racine*/
+	          directoryImpl racine = new directoryImpl(new directory_entry("racine",type[1]));
+	          
+	    /* fin création de la racine */
+	    
             System.out.println("Le serveur est pret ");
             orb.run();
 
