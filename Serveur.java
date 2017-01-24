@@ -1,15 +1,9 @@
 package files;
-
 import org.omg.CORBA.*;
-
 import org.omg.PortableServer.*;
-
 import java.io.*;
-
 import java.lang.*;
-
 import java.util.*;
-
 
 public class Serveur {
     public static void main(String[] args) throws IOException {
@@ -28,7 +22,9 @@ public class Serveur {
             // Instantiation de l'objet : creation de 
             // l'implementation de l'objet
             ////////////////////////////////////////////////////////////////
-            directoryImpl dirImpl = new directoryImpl();
+	    /* création de la racine*/
+            directoryImpl dirImpl = new directoryImpl(new directory_entry("racine",file_type.directory_type));
+	    /* fin création de la racine */
 
             ////////////////////////////////////////////
     	    //  Activation de l'objet d'implementation 
@@ -59,10 +55,7 @@ public class Serveur {
 	    // La methode "orb.run" est bloquante
 	    ////////////////////////////////////////////////////////////////
 	    
-	    /* création de la racine*/
-	          directoryImpl racine = new directoryImpl(new directory_entry("racine",type[1]));
 	          
-	    /* fin création de la racine */
 	    
             System.out.println("Le serveur est pret ");
             orb.run();

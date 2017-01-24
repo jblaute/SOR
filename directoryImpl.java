@@ -10,13 +10,11 @@ public class directoryImpl extends directoryPOA
 {
 
     private int number_of_file;
-    private arrayList<directory_entry> liste = new arrayList()<directory_entry>;
+    private ArrayList<directory_entry> liste;
    
-    public void directoryImpl(directory_entry parent){
-     
-     listEntry = new ArrayList<directory_entry>();
-     number_of_file = 0;
-     ;
+    public directoryImpl(directory_entry parent){
+      liste= new ArrayList<directory_entry>();
+      number_of_file = 0;
     }
 
     public void open_regular_file(regular_fileHolder r, String name, mode m) {
