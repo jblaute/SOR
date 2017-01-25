@@ -72,13 +72,14 @@ public class Client {
 /*
         try {
           // a implémenter
+          
         
         
         } catch (IOException ex) {
           // a implémenter
             System.exit(1);
         }
-*/
+ */
         System.exit(0);
     }
 }

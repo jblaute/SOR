@@ -10,10 +10,10 @@ public class directoryImpl extends directoryPOA
 {
 
     private int number_of_file;
-    private ArrayList<directory_entry> liste;
+    private ArrayList<directory_entry> listEntry;
    
     public directoryImpl(directory_entry parent){
-      liste= new ArrayList<directory_entry>();
+      listEntry = new ArrayList<directory_entry>();
       number_of_file = 0;
     }
 
@@ -27,13 +27,19 @@ public class directoryImpl extends directoryPOA
 
     public void create_regular_file(regular_fileHolder r, String name){
  //       raises (already_exist);
+ /*
+      directory_entry tempDir = new directory_entry(name,file_type.regular_file_type);
+      directoryImpl tempDImpl = new directoryImpl(tempDir);
+      this.add(tempDImpl);
+*/
     }
 
     public void create_directory(directoryHolder f, String name){
-     // f.listEntry.add(
     
-    
-    
+      directory_entry tempDir = new directory_entry(name,file_type.regular_file_type);
+      listEntry.add(tempDir);
+      //on renvoie la référence du répertoire courant modifié
+      f.value = (directory) this;
  //       raises (already_exist);
     }
 
@@ -42,10 +48,23 @@ public class directoryImpl extends directoryPOA
     }
 
     public int list_files(file_listHolder l){
-     return 0;
+      
+      file_listImpl iter = new file_listImpl(this);
+      directoryImpl temp;
+      int compteur=0;
+      while(l.nextOne(temp)){
+        compteur++;
+      }
+      
+     return compteur;
     }
 
+    public ArrayList getListEntry(){
+      return listEntry;
+    }
+    
     public int number_of_file(){
       return number_of_file;
     }
+    
 }
