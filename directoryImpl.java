@@ -17,15 +17,15 @@ public class directoryImpl extends directoryPOA
       number_of_file = 0;
     }
 
-    public void open_regular_file(regular_fileHolder r, String name, mode m) {
+    public void open_regular_file(regular_fileHolder r, String name, mode m)throws invalid_type_file, no_such_file {
  //       raises (invalid_type_file, no_such_file);
     }
 
-    public void open_directory(directoryHolder f, String name){
+    public void open_directory(directoryHolder f, String name)throws invalid_type_file, no_such_file{
  //       raises (invalid_type_file, no_such_file);
     }
 
-    public void create_regular_file(regular_fileHolder r, String name){
+    public void create_regular_file(regular_fileHolder r, String name)throws already_exist{
  //       raises (already_exist);
  /*
       directory_entry tempDir = new directory_entry(name,file_type.regular_file_type);
@@ -34,7 +34,7 @@ public class directoryImpl extends directoryPOA
 */
     }
 
-    public void create_directory(directoryHolder f, String name){
+    public void create_directory(directoryHolder f, String name)throws already_exist{
     
       directory_entry tempDir = new directory_entry(name,file_type.regular_file_type);
       listEntry.add(tempDir);
@@ -43,25 +43,18 @@ public class directoryImpl extends directoryPOA
  //       raises (already_exist);
     }
 
-    public void delete_file(String name){
- //       raises (no_such_file);
+    public void delete_file(String name) throws no_such_file{
     }
 
     public int list_files(file_listHolder l){
       
-      file_listImpl iter = new file_listImpl(this);
-      directoryImpl temp;
       int compteur=0;
-      while(l.nextOne(temp)){
-        compteur++;
-      }
+      file_listImpl iter = new file_listImpl(listEntry);
+      l.value = (file_list)iter;
       
-     return compteur;
+     return 0;
     }
 
-    public ArrayList getListEntry(){
-      return listEntry;
-    }
     
     public int number_of_file(){
       return number_of_file;
