@@ -77,9 +77,9 @@ public class Client {
 		      dir.create_directory(dirHold, "MonPremierDir");  
         
         
-        } catch (already_exist ae) {
+        } catch (IOException ex) {
           // a implémenter
-						System.err.println("répertoire existe déjà");
+						System.err.println("Impossible de créér un répertoire");
             System.exit(1);
         }
 

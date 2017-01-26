@@ -1,5 +1,5 @@
 
-export CORBA_HOME=/home/commun_depinfo/enseignants/singhoff/JACORB
+export CORBA_HOME=/home/tp/JACORB
 
 export ANT_HOME=$CORBA_HOME/apache-ant-1.6.5
 export JAVA_HOME=$CORBA_HOME/jdk1.6.0_21

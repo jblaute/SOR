@@ -1,0 +1,120 @@
+Script started on Mon 23 Jan 2017 10:44:42 AM CET
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  directoryImpl.java
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ cd ../RMI/
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMItp@ubuntu-VirtualBox:~/UBO/RMI$ rmic -c[Kvcompact[K[Kt HelloServeur[K[K[K[K[K[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcd EXO1/
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ RMIC[K[K[K[Krmic -vcompat HelloServeur
+The program 'rmic' can be found in the following packages:
+ * gcj-4.6-jdk
+ * openjdk-6-jdk
+ * gcj-4.5-jdk
+ * openjdk-7-jdk
+Try: sudo apt-get install <selected package>
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ source jac[Kva.zsh
+bash: java.zsh: No such file or directory
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ cd ..
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMItp@ubuntu-VirtualBox:~/UBO/RMI$ ls
+[0m[01;34mEXO1[0m
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMItp@ubuntu-VirtualBox:~/UBO/RMI$ ls[K[Kcd EXO1/
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ cd EXO1/ls[Kcd ..source java.zsh
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ source java.zsh[7Pcd EXO1/ls[Kcd ..source java.zshrmic -vcompat HelloServeur
+error: Class HelloServeur not found.
+1 error
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ ls
+HelloClient.java  HelloServeur.java  [0m[01;32mjava.zsh[0m  MyHostName.java
+Hello.java        java.policy        Makefile  README
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ jvac[K[K[Kavac *.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ ls
+Hello.class        Hello.java          java.policy  MyHostName.class
+HelloClient.class  HelloServeur.class  [0m[01;32mjava.zsh[0m     MyHostName.java
+HelloClient.java   HelloServeur.java   Makefile     README
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ lsjavac *.javals[Krmic -vcompat HelloServeur
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ ls
+Hello.class        HelloServeur.class       java.policy       MyHostName.java
+HelloClient.class  HelloServeur.java        [0m[01;32mjava.zsh[0m          README
+HelloClient.java   HelloServeur_Skel.class  Makefile
+Hello.java         HelloServeur_Stub.class  MyHostName.class
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ lsrmic -vcompat HelloServeur[C-HelloServeurkHelloServeureHelloServeureHelloServeurpHelloServeur HelloServeur
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ ls
+Hello.class         HelloServeur_Skel.class  Makefile
+HelloClient.class   HelloServeur_Skel.java   MyHostName.class
+HelloClient.java    HelloServeur_Stub.class  MyHostName.java
+Hello.java          HelloServeur_Stub.java   README
+HelloServeur.class  java.policy
+HelloServeur.java   [0m[01;32mjava.zsh[0m
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ java HelloClient
+Deux arguments : port-rmiregistry machine  ! 
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ java HelloClient 20000
+Deux arguments : port-rmiregistry machine  ! 
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ java HelloClient 20000[Krmiregistry 20000
+java.rmi.server.ExportException: Port already in use: 20000; nested exception is: 
+	java.net.BindException: Address already in use
+	at sun.rmi.transport.tcp.TCPTransport.listen(TCPTransport.java:310)
+	at sun.rmi.transport.tcp.TCPTransport.exportObject(TCPTransport.java:218)
+	at sun.rmi.transport.tcp.TCPEndpoint.exportObject(TCPEndpoint.java:393)
+	at sun.rmi.transport.LiveRef.exportObject(LiveRef.java:129)
+	at sun.rmi.server.UnicastServerRef.exportObject(UnicastServerRef.java:190)
+	at sun.rmi.registry.RegistryImpl.setup(RegistryImpl.java:92)
+	at sun.rmi.registry.RegistryImpl.<init>(RegistryImpl.java:78)
+	at sun.rmi.registry.RegistryImpl.main(RegistryImpl.java:322)
+Caused by: java.net.BindException: Address already in use
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:365)
+	at java.net.ServerSocket.bind(ServerSocket.java:319)
+	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+	at java.net.ServerSocket.<init>(ServerSocket.java:97)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createServerSocket(RMIDirectSocketFactory.java:27)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createServerSocket(RMIMasterSocketFactory.java:333)
+	at sun.rmi.transport.tcp.TCPEndpoint.newServerSocket(TCPEndpoint.java:649)
+	at sun.rmi.transport.tcp.TCPTransport.listen(TCPTransport.java:299)
+	... 7 more
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ rmiregistry 20000[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kjava HelloClient 20000[Kls[Kjava HelloClient
+Deux arguments : port-rmiregistry machine  ! 
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ java HelloClient 20000
+Deux arguments : port-rmiregistry machine  ! 
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ java HelloClient 20000 localhost
+ Connexion au service : //localhost.univ-brest.fr:20000/HelloServeur
+Hello exception: HelloServeur
+java.rmi.NotBoundException: HelloServeur
+	at sun.rmi.registry.RegistryImpl.lookup(RegistryImpl.java:106)
+	at sun.rmi.registry.RegistryImpl_Skel.dispatch(Unknown Source)
+	at sun.rmi.server.UnicastServerRef.oldDispatch(UnicastServerRef.java:386)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:250)
+	at sun.rmi.transport.Transport$1.run(Transport.java:159)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+	at sun.rmi.transport.StreamRemoteCall.exceptionReceivedFromServer(StreamRemoteCall.java:255)
+	at sun.rmi.transport.StreamRemoteCall.executeCall(StreamRemoteCall.java:233)
+	at sun.rmi.server.UnicastRef.invoke(UnicastRef.java:359)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at java.rmi.Naming.lookup(Naming.java:84)
+	at HelloClient.<init>(HelloClient.java:41)
+	at HelloClient.main(HelloClient.java:74)
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ java HelloClient 20000 localhost[K[K[Krmiregistry 20000
+locahost
+^C]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ 
+]0;tp@ubuntu-VirtualBox: ~/UBO/RMI/EXO1tp@ubuntu-VirtualBox:~/UBO/RMI/EXO1$ 
+]0;tp@ubuntu-VirtualBox: ~/U
