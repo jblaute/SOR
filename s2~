@@ -1,4 +1,4 @@
 #!/bin/bash
 source corba.zsh
-jaco files.Serveur
+jaco SOR.files.Serveur
 
