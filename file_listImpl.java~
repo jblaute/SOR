@@ -20,6 +20,8 @@ public class file_listImpl extends file_listPOA
   }
   
   public boolean next_one(directory_entryHolder e){
+		//directory_entry de = (directoy_entry) it.next();
+		//org.omg.CORBA.Object objc = poa_.servant_to_reference(de);
    	e.value = (directory_entry) it.next();
     return it.hasNext();
   }

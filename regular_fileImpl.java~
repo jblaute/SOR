@@ -9,8 +9,6 @@ public class regular_fileImpl extends regular_filePOA
 {
 
   public void regular_fileImpl(){
-		offset = 0;
-
   }
 		private int offset;
 
