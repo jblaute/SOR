@@ -23,4 +23,8 @@ public class file_listImpl extends file_listPOA
    	e.value = (directory_entry) it.next();
     return it.hasNext();
   }
+	public void add(directory_entry de){
+		this.list.add(de);
+	}
+
 }

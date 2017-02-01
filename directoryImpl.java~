@@ -5,8 +5,8 @@ import org.omg.CORBA.*;
 import java.lang.*;
 import java.util.ArrayList;
 import org.omg.PortableServer.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+//import java.util.Map;
 
 public class directoryImpl extends directoryPOA
 {
@@ -74,24 +74,24 @@ public class directoryImpl extends directoryPOA
 
     public int list_files(file_listHolder l){
       
-      
-      // création d'une liste de fichiers et repertoires du rep courant 
-			file_listImpl flistImpl = new file_listImpl();
-      org.omg.CORBA.Object objc = poa_.servant_to_reference(flistImpl);
+     try { 
+		    // création d'une liste de fichiers et repertoires du rep courant 
+				file_listImpl flistImpl = new file_listImpl();
+		    org.omg.CORBA.Object objc = poa_.servant_to_reference(flistImpl);
 			
-			// on remplie la liste avec les directory_entry du rep courant
-			for (Map.Entry<String<,directory_entry> dirEntry : this.listDir.entrySet())
-				flistImpl.add(dirEntry.getValue());
-			for (Map.Entry<String,directory_entry> dirEntry : this.listReg.entrySet())
-				flistImpl.add(dirEntry.getValue());
-			//et envoie de la ref au client
-			l.value = file_listHelper.narrow(objc);	
-     return this.number_of_file;
+				// on remplie la liste avec les directory_entry du rep courant
+				for (Map.Entry<String,directory_entry> dirEntry : this.listDir.entrySet())
+					flistImpl.add(dirEntry.getValue());
+				for (Map.Entry<String,directory_entry> dirEntry : this.listReg.entrySet())
+					flistImpl.add(dirEntry.getValue());
+				//et envoie de la ref au client
+				l.value = file_listHelper.narrow(objc);	
+		   return this.number_of_file;
+		  }catch (Exception e){ System.out.println("POA Exception"+e);
+			} 
     }
-
-    
     public int number_of_file(){
-      return number_of_file;
+      return this.number_of_file;
     }
     
 }

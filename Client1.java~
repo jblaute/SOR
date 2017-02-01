@@ -99,7 +99,10 @@ public class Client1 {
 				System.err.println("le fichier existe déjà");
         System.exit(1);
 			}
-    
+    }
+
+
+  
     System.exit(0);
   }
 }

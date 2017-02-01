@@ -7,12 +7,12 @@ import java.lang.*;
 
 public class regular_fileImpl extends regular_filePOA
 {
+	private int offset;
 
-  public void regular_fileImpl(){
+  public regular_fileImpl(){
 		offset = 0;
-
   }
-		private int offset;
+		
 
    public int read(int size, StringHolder data) throws end_of_file,invalid_operation {
 /*
