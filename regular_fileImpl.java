@@ -8,7 +8,7 @@ import java.lang.*;
 public class regular_fileImpl extends regular_filePOA
 {
 	private int offset;
-
+	
   public regular_fileImpl(){
 		offset = 0;
   }

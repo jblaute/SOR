@@ -92,7 +92,17 @@ public class Client1 {
 			regular_fileHolder regFileHold = new regular_fileHolder(); 
       dir.create_regular_file(regFileHold, "MonPremierFichier");
 			
- 			System.out.println("nombre  du rep créer"+dir.number_of_file());  
+ 			System.out.println("nombre  du rep créer"+dir.number_of_file());
+			
+			file_listHolder fl1 = new file_listHolder();
+			int nbe = dir.list_files(fl1);
+			System.out.println("nombre  d'élé : "+nbe);
+			directory_entry dr1 = new directory_entry();
+			if (fl1.next_one(dr1)){
+
+				System.out.println("nom du premier élément : "+dr1.name);
+			}
+			//System.out.println("nom du fichier :"+regFileHold.value.name);  
     
     	} catch (already_exist ae) {
       // a implémenter
