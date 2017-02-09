@@ -51,6 +51,7 @@ public class directoryImpl extends directoryPOA
 
     public void create_directory(directoryHolder f, String name)throws already_exist{
 			//si il existe déjà avec list_files
+
 			if (false) throw new already_exist();
 			// création d'un nouveau directory et passage en ref pour le client
 			try{
@@ -59,6 +60,7 @@ public class directoryImpl extends directoryPOA
 			f.value = directoryHelper.narrow(objc);
 			// ajout dans le parent de directory_entry(java.lang.String name, files.file_type type)			
 			directory_entry de = new directory_entry(name,file_type.directory_type);
+System.out.println(de.name);
 			this.listDir.put(name, de);
 			this.number_of_file++;
 			//System.out.println("nbre de file = "+this.number_of_file);

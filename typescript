@@ -1,4 +1,4 @@
-Script started on Sat 28 Jan 2017 09:26:41 PM CET
+Script started on Wed 08 Feb 2017 10:14:25 AM CET
 ]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
 rm -rf core *.jacorb *.ref 
 rm -rf classes generated
@@ -14,272 +14,18 @@ Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 touch files.jacorb 
 javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
 javac -d classes  directoryImpl.java
-directoryImpl.java:11: cannot find symbol
-symbol  : class POA
-location: class files.directoryImpl
-	private POA poa_;
-	        ^
-directoryImpl.java:15: cannot find symbol
-symbol  : class POA
-location: class files.directoryImpl
-	public directoryImpl(POA poa){
-	                     ^
-directoryImpl.java:40: cannot find symbol
-symbol  : variable already_exist
-location: class files.directoryImpl
-			if (false) raises (already_exist);
-			                   ^
-directoryImpl.java:46: cannot find symbol
-symbol  : variable directory_type
-location: class files.directoryImpl
-			directory_entry de = new directory_entry(name, new file_type(directory_type));
-			                                                             ^
-4 errors
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-directoryImpl.java:46: ';' expected
-			directory_entry de = new directory_entry(name,file_type.directory_type));
-			                                                                       ^
-1 error
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-directoryImpl.java:11: cannot find symbol
-symbol  : class POA
-location: class files.directoryImpl
-	protected POA poa_;
-	          ^
-directoryImpl.java:15: cannot find symbol
-symbol  : class POA
-location: class files.directoryImpl
-	public directoryImpl(POA poa){
-	                     ^
-2 errors
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-directoryImpl.java:7: package org.omg.PortableServeur does not exist
-import org.omg.PortableServeur.*;
-^
-directoryImpl.java:11: cannot find symbol
-symbol  : class POA
-location: class files.directoryImpl
-	protected POA poa_;
-	          ^
-directoryImpl.java:15: cannot find symbol
-symbol  : class POA
-location: class files.directoryImpl
-	public directoryImpl(POA poa){
-	                     ^
-3 errors
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-directoryImpl.java:42: cannot find symbol
-symbol  : method directoryImpl(org.omg.PortableServer.POA)
-location: class files.directoryImpl
-    	directoryImpl newdir = directoryImpl(this.poa_);
-    	                       ^
-1 error
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-directoryImpl.java:42: cannot find symbol
-symbol  : method directoryImpl(org.omg.PortableServer.POA)
-location: class files.directoryImpl
-    	directoryImpl newdir = directoryImpl(poa_);
-    	                       ^
-1 error
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-directoryImpl.java:43: unreported exception org.omg.PortableServer.POAPackage.ServantNotActive; must be caught or declared to be thrown
-			org.omg.CORBA.Object objc = poa_.servant_to_reference(newdir);
-			                                                     ^
-1 error
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-directoryImpl.java:43: unreported exception org.omg.PortableServer.POAPackage.ServantNotActive; must be caught or declared to be thrown
-			org.omg.CORBA.Object objc = poa_.servant_to_reference(newdir);
-			                                                     ^
-1 error
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-directoryImpl.java:51: '(' expected
-			} catch {(Exception e){ System.out.println("POA Exception"+e);
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:101: cannot find symbol
+symbol  : method next_one(files.directory_entry)
+location: class files.file_listHolder
+			if (fl1.next_one(dr1)){
 			       ^
-directoryImpl.java:51: <identifier> expected
-			} catch {(Exception e){ System.out.println("POA Exception"+e);
-			         ^
-directoryImpl.java:51: ')' expected
-			} catch {(Exception e){ System.out.println("POA Exception"+e);
-			          ^
-directoryImpl.java:51: '{' expected
-			} catch {(Exception e){ System.out.println("POA Exception"+e);
-			                   ^
-directoryImpl.java:51: illegal start of expression
-			} catch {(Exception e){ System.out.println("POA Exception"+e);
-			                     ^
-directoryImpl.java:51: ';' expected
-			} catch {(Exception e){ System.out.println("POA Exception"+e);
-			                      ^
-6 errors
-make: *** [classes/files/directoryImpl.class] Error 1
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
-rm -rf core *.jacorb *.ref 
-rm -rf classes generated
-if [ ! -d classes ]; then \
-	   mkdir classes;  \
-	fi;
-if [ ! -d generated ]; then \
-	   mkdir generated;  \
-	fi;
-idl -d generated  files.idl
-javac -d classes generated/files/*.java
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-touch files.jacorb 
-javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
-javac -d classes  regular_fileImpl.java
-javac -d classes  Serveur.java
-Serveur.java:43: not a statement
-				out.close;
-				   ^
 1 error
-make: *** [classes/files/Serveur.class] Error 1
+make: *** [classes/files/Client1.class] Error 1
 ]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
 rm -rf core *.jacorb *.ref 
 rm -rf classes generated
@@ -295,29 +41,670 @@ Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 touch files.jacorb 
 javac -d classes  file_listImpl.java
-javac -d classes  directoryImpl.java
 javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
 javac -d classes  Serveur.java
-Serveur.java:39: cannot find symbol
-symbol  : variable obj
-location: class files.Serveur
-			  String nameObj = orb.object_to_string(obj);
-			                                        ^
-Serveur.java:41: cannot find symbol
-symbol  : class PrinterWriter
-location: class files.Serveur
-				PrinterWriter out = new PrinterWriter(new FileOutputStream(refFile));
-				^
-Serveur.java:41: cannot find symbol
-symbol  : class PrinterWriter
-location: class files.Serveur
-				PrinterWriter out = new PrinterWriter(new FileOutputStream(refFile));
-				                        ^
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./bash s2
+bash: ./bash: No such file or directory
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./bash s2[1P[1P
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+^Z
+[1]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+^Z
+[2]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2[2@./[C[C[C[C[C[C[C[1Pscript
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:101: cannot find symbol
+symbol  : method test()
+location: class files.file_listHolder
+			fl1.test();
+			   ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+^Z
+[3]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:101: cannot find symbol
+symbol  : method test()
+location: interface files.file_list
+			fl1.value.test();
+			         ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:98: cannot find symbol
+symbol  : method test()
+location: class files.file_listHolder
+			fl1.test();
+			   ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:99: cannot find symbol
+symbol  : method test()
+location: interface files.file_list
+			f2.test();
+			  ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:98: files.file_list is abstract; cannot be instantiated
+			file_list f2 = new file_list();
+			               ^
+Client1.java:99: cannot find symbol
+symbol  : method test()
+location: interface files.file_list
+			f2.test();
+			  ^
+2 errors
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:98: files.file_list is abstract; cannot be instantiated
+			file_list f2 = new file_list();
+			               ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:98: files.file_list is abstract; cannot be instantiated
+			file_list f2 = new file_list();
+			               ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:98: incompatible types
+found   : files.file_listImpl
+required: files.file_list
+			file_list f2 = new file_listImpl();
+			               ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:103: next_one(files.directory_entryHolder) in files.file_listOperations cannot be applied to (files.directory_entry)
+			if ((fl1.value).next_one(dr1)){
+			               ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+test
+^Z
+[4]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+test
+^Z
+[5]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+test
+^[[A^Z
+[6]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+test
+^Z
+[7]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+test
+^Z
+[8]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:103: incomparable types: boolean and <nulltype>
+		System.out.println((fl1.value).next_one(dr1)==null);
+		                                            ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:103: incomparable types: boolean and <nulltype>
+		System.out.println((fl1.value).next_one(dr1)==null);
+		                                            ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+test
+^Z
+[9]+  Stopped                 bash s2
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+Client1.java:103: boolean cannot be dereferenced
+		System.out.println((fl1.value).next_one(dr1).value);
+		                                            ^
+1 error
+make: *** [classes/files/Client1.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+test
+^C]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+file_listImpl.java:25: cannot find symbol
+symbol  : variable poa_
+location: class files.file_listImpl
+		org.omg.CORBA.Object objc = poa_.servant_to_reference(direntry);
+		                            ^
+file_listImpl.java:26: incompatible types
+found   : java.lang.Object
+required: files.directory_entry
+		direntry = it.next();
+		                  ^
+file_listImpl.java:27: cannot find symbol
+symbol  : method narrow(org.omg.CORBA.Object)
+location: class files.directory_entryHelper
+   	e.value = directory_entryHelper.narrow(objc);
+   	                               ^
 3 errors
-make: *** [classes/files/Serveur.class] Error 1
+make: *** [classes/files/file_listImpl.class] Error 1
 ]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
 ]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
 ]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ 
-]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+file_listImpl.java:25: cannot find symbol
+symbol  : variable poa_
+location: class files.file_listImpl
+		org.omg.CORBA.Object objc = poa_.servant_to_reference(direntry);
+		                            ^
+file_listImpl.java:27: cannot find symbol
+symbol  : method narrow(org.omg.CORBA.Object)
+location: class files.directory_entryHelper
+   	e.value = directory_entryHelper.narrow(objc);
+   	                               ^
+2 errors
+make: *** [classes/files/file_listImpl.class] Error 1
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  regular_fileImpl.java
+javac -d classes  directoryImpl.java
+javac -d classes  Serveur.java
+javac -d classes  Client.java
+javac -d classes  Client1.java
+]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ ./script[1Pbash s2
+[ No configuration properties found for configuration jacorb ]
+Le serveur est pret 
+objet cree
+^C]0;tp@ubuntu-VirtualBox: ~/UBO/SORtp@ubuntu-VirtualBox:~/UBO/SOR$ bash s2./script
+rm -rf core *.jacorb *.ref 
+rm -rf classes generated
+if [ ! -d classes ]; then \
+	   mkdir classes;  \
+	fi;
+if [ ! -d generated ]; then \
+	   mkdir generated;  \
+	fi;
+idl -d generated  files.idl
+javac -d classes generated/files/*.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+touch files.jacorb 
+javac -d classes  file_listImpl.java
+javac -d classes  r

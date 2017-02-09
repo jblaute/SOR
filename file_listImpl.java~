@@ -16,6 +16,7 @@ public class file_listImpl extends file_listPOA
   public file_listImpl(){
    	list = new ArrayList<directory_entry>();
    	it = list.iterator();
+		System.out.println("objet cree");
 		
   }
   
@@ -23,4 +24,10 @@ public class file_listImpl extends file_listPOA
    	e.value = (directory_entry) it.next();
     return it.hasNext();
   }
+	public void add(directory_entry de){
+		this.list.add(de);
+	}
+	public void test(){
+		System.out.println("test");
+	}
 }

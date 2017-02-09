@@ -95,12 +95,14 @@ public class Client1 {
  			System.out.println("nombre  du rep créer"+dir.number_of_file());
 			
 			file_listHolder fl1 = new file_listHolder();
+			
 			int nbe = dir.list_files(fl1);
 			System.out.println("nombre  d'élé : "+nbe);
-			directory_entry dr1 = new directory_entry();
-			if (fl1.next_one(dr1)){
+			directory_entryHolder dr1 = new directory_entryHolder();
+			dr1.value = new directory_entry();
+			if ((fl1.value).next_one(dr1)){
 
-				System.out.println("nom du premier élément : "+dr1.name);
+				System.out.println("nom du premier élément : "+(dr1.value).name);
 			}
 			//System.out.println("nom du fichier :"+regFileHold.value.name);  
     

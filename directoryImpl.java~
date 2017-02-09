@@ -88,6 +88,7 @@ public class directoryImpl extends directoryPOA
 				l.value = file_listHelper.narrow(objc);	
 		   return this.number_of_file;
 		  }catch (Exception e){ System.out.println("POA Exception"+e);
+				return -1;
 			} 
     }
     public int number_of_file(){
