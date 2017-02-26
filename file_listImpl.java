@@ -8,26 +8,40 @@ import java.util.Iterator;
 
 
 
-public class file_listImpl extends file_listPOA
-{
-  private ArrayList <directory_entry> list;
-  private Iterator <directory_entry>it;
+public class file_listImpl extends file_listPOA{
 
-  public file_listImpl(){
-   	list = new ArrayList<directory_entry>();
-   	it = list.iterator();
-		System.out.println("objet cree");
+	private ArrayList<directory> listDir;
+	private ArrayList<regular_file> listReg;
+	private Iterator <directory> itdir;
+	private Iterator <regular_file> itreg;  
+
+  public file_listImpl(ArrayList<directory> listDir,ArrayList<regular_file> listReg){
+   	this.listDir = listDir;
+   	this.listReg = listReg;
+		this.itdir = listDir.iterator();
+		this.itreg = listReg.iterator();
 		
   }
   
   public boolean next_one(directory_entryHolder e){
-   	e.value = (directory_entry) it.next();
-    return it.hasNext();
-  }
-	public void add(directory_entry de){
-		this.list.add(de);
+		//s'il reste des répertoires	
+		if(itdir.hasNext()){
+			itdir.next();
+			directory_entry dentry = new directory_entry(itdir.getDirName(),file_type.directory_type);
+			e.value = dentry;
+			return true;
+		}
+		//s'il reste des fichiers	
+		if(itreg.hasNext()){
+			itreg.next();
+			directory_entry dentry = new directory_entry(itreg.getRegName(),file_type.regular_file_type);
+			e.value = dentry;
+			return true;
+		}
+		return false;
 	}
-	public void test(){
-		System.out.println("test");
-	}
+
 }
+
+	
+

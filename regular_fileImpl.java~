@@ -3,16 +3,33 @@ package files;
 
 import org.omg.CORBA.*;
 import java.lang.*;
+import java.io.*;
 
 
 public class regular_fileImpl extends regular_filePOA
 {
+	private String name;
+	private File file;
 	private int offset;
-
-  public regular_fileImpl(){
-		offset = 0;
+  
+  public regular_fileImpl(String name){
+		this.name = name;
+		this.file = null;
+		this.offset = 0;
   }
 		
+	public String getName(){
+		return this.name;
+	}
+	public File getFile(){
+		return this.file;
+	}
+	public int getOffset(){
+		return this.offset;
+	}
+
+
+
 
    public int read(int size, StringHolder data) throws end_of_file,invalid_operation {
 /*

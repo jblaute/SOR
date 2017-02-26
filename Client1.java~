@@ -71,7 +71,7 @@ public class Client1 {
 			directoryHolder dirHold = new directoryHolder(); 
       dir.create_directory(dirHold, "MonPremierDir");
 			Thread th = new Thread();
-			th.sleep(2000);  
+			//th.sleep(2000);  
  			System.out.println("nombre  du rep créer"+dir.number_of_file());  
     
     } catch (already_exist ae) {
@@ -79,16 +79,16 @@ public class Client1 {
 				System.err.println("répertoire existe déjà");
         System.exit(1);
 			}
-			catch (InterruptedException ie){
+			/*catch (InterruptedException ie){
 				System.err.println("erreur de thread");
         System.exit(1);
-    	}
+    	}*/
  		////////////////////////////////////////////////////
     // Test création d'un fichier
     ////////////////////////////////////////////////////
 		 try {
       // a implémenter
-
+			dir = directoryHelper.narrow(obj);
 			regular_fileHolder regFileHold = new regular_fileHolder(); 
       dir.create_regular_file(regFileHold, "MonPremierFichier");
 			
@@ -96,12 +96,13 @@ public class Client1 {
 			
 			file_listHolder fl1 = new file_listHolder();
 			
+			
+			
+			directory_entryHolder dr1 = new directory_entryHolder();
+			dr1.value = new directory_entry("",file_type.regular_file_type);
 			int nbe = dir.list_files(fl1);
 			System.out.println("nombre  d'élé : "+nbe);
-			directory_entryHolder dr1 = new directory_entryHolder();
-		//System.out.println((fl1.value).next_one(dr1));
-
-			if ((fl1.value).next_one(dr1)){
+			if (fl1.value.next_one(dr1)){
 
 				System.out.println("nom du premier élément : "+(dr1.value).name);
 			}
