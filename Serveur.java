@@ -23,7 +23,7 @@ public class Serveur {
 		  // l'implementation de l'objet
 		  ////////////////////////////////////////////////////////////////
 			// création de la racine
-			directoryImpl dirImpl = new directoryImpl(poa);
+			directoryImpl dirImpl = new directoryImpl(poa,"racine");
 		/* fin création de la racine */
 
 		        ////////////////////////////////////////////

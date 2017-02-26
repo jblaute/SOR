@@ -10,6 +10,8 @@ module files {
 	
 
   interface regular_file {
+	
+    readonly attribute string reg_name;
 
     long read(in long size, inout string data)
         raises (end_of_file,invalid_operation);
@@ -42,6 +44,7 @@ module files {
   interface directory {
 
     readonly attribute long number_of_file;
+    readonly attribute string dir_name;
 
     void open_regular_file(inout regular_file r, in string name, in mode m) 
         raises (invalid_type_file, no_such_file);

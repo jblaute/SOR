@@ -3,11 +3,11 @@ package files;
 
 import org.omg.CORBA.*;
 import java.lang.*;
-import java.util.ArrayList;
+
 import org.omg.PortableServer.*;
 import java.util.*;
-import java.util.Iterator;
-//import java.util.Map;
+
+
 
 public class directoryImpl extends directoryPOA
 {
@@ -27,7 +27,7 @@ public class directoryImpl extends directoryPOA
 		number_of_file = 0;
 	}
 
-	public String getDirName(){
+	public String dir_name(){
 		return this.name;
 	}
 
@@ -35,7 +35,7 @@ public class directoryImpl extends directoryPOA
       return this.number_of_file;
     }
 
-	public String getPath(){
+	public String get_path(){
       return this.path;
     }
 	
@@ -53,8 +53,8 @@ public class directoryImpl extends directoryPOA
 			//Parcours de la liste des fichiers
 			Iterator <regular_file> it = listReg.iterator();
 			while (it.hasNext()){
-				it.next();
-				if (it.getRegName().equals(name)) throw new already_exist();
+				regular_file reg = it.next();
+				if (reg.reg_name().equals(name)) throw new already_exist();
 			}
 			// création d'un nouveau fichier dans le repertoire du serveur
 			//a faire
@@ -77,8 +77,8 @@ public class directoryImpl extends directoryPOA
 			//Parcours de la liste des fichiers
 			Iterator <directory> it = this.listDir.iterator();
 			while(it.hasNext()){
-				it.next();
-				if(it.getDirName().equals(name)) throw new already_exist();
+				directory dir = it.next();
+				if(dir.dir_name().equals(name)) throw new already_exist();
 			}
 			
 			// création d'un nouveau directory et passage en ref pour le client
@@ -105,14 +105,13 @@ public class directoryImpl extends directoryPOA
 		    org.omg.CORBA.Object objc = poa_.servant_to_reference(flistImpl);
 			
 				//et envoie de la ref au client
-				list_file lf = file_listHelper.narrow(objc);
+				file_list lf = file_listHelper.narrow(objc);
 				l.value = lf;
-		    return this.number_of_file;	
+		    
 
 		  }catch (Exception e){ System.out.println("POA Exception"+e);
-				return -1;
 			} 
+			return this.number_of_file;	
     }
-    
     
 }

@@ -38,7 +38,7 @@ public class Serveur {
 			try {
 			  String nameObj = orb.object_to_string(dir);
 				String refFile = "gestiondirectory.ref";
-				PrinterWriter out = new PrinterWriter(new FileOutputStream(refFile));
+				PrintWriter out = new PrintWriter(new FileOutputStream(refFile));
 				out.println(nameObj);
 				out.close();
 			} catch (IOException ex) {
