@@ -111,9 +111,59 @@ public class Client1 {
     	} catch (already_exist ae) {
       // a implémenter
 				System.err.println("le fichier existe déjà");
+				
+				
         System.exit(1);
 			}
     
+	//////////////////////////////////////////			
+	// Test d'ouverture d'un fichier existant
+	//////////////////////////////////////////
+	System.out.println("On tente de récuperer un fichier existant : MonPremierFichier");
+	try{
+		regular_fileHolder openedFileHold = new regular_fileHolder();
+		dir.open_regular_file(openedFileHold, "MonPremierFichier", mode.read_only);
+		System.out.println("Nom du fichier récupéré : "+openedFileHold.value.reg_name());
+	}catch(Exception e){
+		System.out.println(e);
+	}
+	////////////////////////////////////////////			
+	// Test d'ouverture d'un fichier inexistant
+	////////////////////////////////////////////
+	System.out.println("On tente de récuperer un fichier inexistant : MonSecondFichier");
+	try{
+		regular_fileHolder openedFileHold2 = new regular_fileHolder();
+		dir.open_regular_file(openedFileHold2, "MonSecondFichier", mode.read_only);
+		System.out.println("Nom du fichier récupéré : "+openedFileHold2.value.reg_name());
+	}catch(Exception e){
+		System.out.println(e);
+	}
+	
+	/////////////////////////////////////////////			
+	// Test d'ouverture d'un repertoire existant
+	/////////////////////////////////////////////
+	System.out.println("On tente de récuperer un répertoire existant : MonPremierDir");
+	try{
+		directoryHolder createdDirHold = new directoryHolder();
+		dir.open_directory(createdDirHold, "MonPremierDir");
+		System.out.println("Nom du dossier récupéré : "+createdDirHold.value.dir_name());
+	}catch(Exception e){
+		System.out.println(e);
+	}
+
+	///////////////////////////////////////////////			
+	// Test d'ouverture d'un repertoire inexistant
+	///////////////////////////////////////////////
+	System.out.println("On tente de récuperer un répertoire existant : MonSecondDir");
+	try{
+		directoryHolder createdDirHold2 = new directoryHolder();
+		dir.open_directory(createdDirHold2, "MonSecondDir");
+		System.out.println("Nom du dossier récupéré : "+createdDirHold2.value.dir_name());
+	}catch(Exception e){
+		System.out.println(e);
+	}
+	
+	
     System.exit(0);
   }
 }
