@@ -130,6 +130,21 @@ public class directoryImpl extends directoryPOA
     }
 
     public void delete_file(String name) throws no_such_file{
+			//Parcours de la liste des fichiers
+			Iterator <regular_file> it = listReg.iterator();
+			boolean existe = false;
+			while(it.hasNext()){
+				regular_file reg = it.next();
+				// si le fichier existe, on l'enleve de la liste de fichier et on le supprime du syteme de fichier
+				if(reg.reg_name().equals(name)) {
+					File file = new File(this.path+"/"+name);
+					file.delete();
+					this.listReg.remove(name);
+					existe = true;
+					break;
+				}
+			}//sinon on renvoie une exception pas de fichier de ce nom
+			if (!existe) throw new no_such_file();
     }
 
     public int list_files(file_listHolder l){

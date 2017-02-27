@@ -162,7 +162,22 @@ public class Client1 {
 	}catch(Exception e){
 		System.out.println(e);
 	}
-	
+	///////////////////////////////////////////////			
+	// Test de suppression d'un fichier
+	///////////////////////////////////////////////
+	System.out.println("On tente de supprimer un fichier: MonSecondFichier");
+	try{
+		
+		dir.delete_file("MonSecondFichier");
+		//on l'ouvre et on attend le renvoie de l'exception il n'existe pas
+		regular_fileHolder openedFileHold2 = new regular_fileHolder();
+		dir.open_regular_file(openedFileHold2, "MonSecondFichier", mode.read_only);
+				
+	}catch(Exception e){
+		System.out.println(e);
+	}
+
+
 	
     System.exit(0);
   }
