@@ -1,6 +1,5 @@
 module files {
 
-
   exception no_such_file {};
   exception end_of_file {};
   exception invalid_offset {};
@@ -8,10 +7,12 @@ module files {
   exception invalid_operation{};
   exception already_exist {};
 	
+  enum mode {read_only, write_append, write_trunc, read_write};
 
   interface regular_file {
 	
     readonly attribute string reg_name;
+    attribute mode mode_ouverture;
 
     long read(in long size, inout string data)
         raises (end_of_file,invalid_operation);
@@ -21,12 +22,14 @@ module files {
 
     void seek(in long new_offset)
         raises (invalid_offset,invalid_operation);
+        
+    void ouvrir(in mode m);
+    
+    void fermer();
 
-    void close();
   };
 
 
-  enum mode {read_only, write_append, write_trunc, read_write};
   enum file_type {regular_file_type, directory_type};
 
   struct directory_entry {

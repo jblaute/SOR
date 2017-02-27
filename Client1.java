@@ -117,16 +117,44 @@ public class Client1 {
 			}
     
 	//////////////////////////////////////////			
-	// Test d'ouverture d'un fichier existant
+	// Test d'ouverture d'un fichier existant en mode read/write
 	//////////////////////////////////////////
-	System.out.println("On tente de récuperer un fichier existant : MonPremierFichier");
+	System.out.println("On tente d'ouvrir un fichier existant : MonPremierFichier");
 	try{
 		regular_fileHolder openedFileHold = new regular_fileHolder();
-		dir.open_regular_file(openedFileHold, "MonPremierFichier", mode.read_only);
-		System.out.println("Nom du fichier récupéré : "+openedFileHold.value.reg_name());
+		dir.open_regular_file(openedFileHold, "MonPremierFichier", mode.read_write);
+		System.out.println("fichier "+openedFileHold.value.reg_name()+" ouvert");
 	}catch(Exception e){
 		System.out.println(e);
 	}
+
+	try{
+		regular_fileHolder openedFileHold_again = new regular_fileHolder();
+		dir.open_regular_file(openedFileHold_again, "MonPremierFichier", mode.read_write);
+		System.out.println("fichier "+openedFileHold_again.value.reg_name()+" ouvert");
+
+		System.out.println("On tente d'écrire quelques caractères : je suis content");
+		openedFileHold_again.value.write(15,"je suis content");
+		System.out.println("On ferme le fichier pour ensuite le réouvrir en lecture");
+		openedFileHold_again.value.fermer();
+		dir.open_regular_file(openedFileHold_again, "MonPremierFichier", mode.read_only);
+		System.out.println("On se déplace de 5 caractères");
+		openedFileHold_again.value.seek(5);
+		System.out.println("On lit le 5 prochain caractères (resultat attendu : 'is co')");
+		StringHolder texteHold=new StringHolder();
+		texteHold.value=new String();
+		openedFileHold_again.value.read(5,texteHold);
+		System.out.println("texte obtenu : "+texteHold.value);
+
+	}catch(Exception e){
+		System.out.println(e);
+	}
+
+
+	
+	
+	
+	
 	////////////////////////////////////////////			
 	// Test d'ouverture d'un fichier inexistant
 	////////////////////////////////////////////
@@ -162,22 +190,7 @@ public class Client1 {
 	}catch(Exception e){
 		System.out.println(e);
 	}
-	///////////////////////////////////////////////			
-	// Test de suppression d'un fichier
-	///////////////////////////////////////////////
-	System.out.println("On tente de supprimer un fichier: MonSecondFichier");
-	try{
-		
-		dir.delete_file("MonSecondFichier");
-		//on l'ouvre et on attend le renvoie de l'exception il n'existe pas
-		regular_fileHolder openedFileHold2 = new regular_fileHolder();
-		dir.open_regular_file(openedFileHold2, "MonSecondFichier", mode.read_only);
-				
-	}catch(Exception e){
-		System.out.println(e);
-	}
-
-
+	
 	
     System.exit(0);
   }
