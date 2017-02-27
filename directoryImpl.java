@@ -40,12 +40,34 @@ public class directoryImpl extends directoryPOA
     }
 	
 	public void open_regular_file(regular_fileHolder r, String name, mode m)throws invalid_type_file, no_such_file {
-	//       raises (invalid_type_file, no_such_file);
+
+		Iterator <regular_file> it = listReg.iterator();
+		while (it.hasNext()){
+			regular_file reg = it.next();
+			if (reg.reg_name().equals(name)){
+				try{
+					r.value = reg;
+				}catch(Exception e){
+				      throw new invalid_type_file();
+				}
+			}
+		}
+		if(r.value==null)throw new no_such_file();
 	}
 
 	public void open_directory(directoryHolder f, String name)throws invalid_type_file, no_such_file{
-	//       raises (invalid_type_file, no_such_file);
-			
+		Iterator <directory> it = listDir.iterator();
+		while (it.hasNext()){
+			directory dir = it.next();
+			if (dir.dir_name().equals(name)){
+				try{
+					f.value = dir;
+				}catch(Exception e){
+				      throw new invalid_type_file();
+				}
+			}
+		}
+		if(f.value==null)throw new no_such_file();
 	}
 
 	public void create_regular_file(regular_fileHolder r, String name)throws already_exist{
