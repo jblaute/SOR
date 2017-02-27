@@ -104,9 +104,9 @@ public class Client1 {
 			System.out.println("nombre  d'élé : "+nbe);
 			if (fl1.value.next_one(dr1)){
 
-				System.out.println("nom du premier élément : ");
+				System.out.println("nom du premier élément : "+dr1.value.name);
 			}
-			//System.out.println("nom du fichier :"+regFileHold.value.name);  
+			//System.out.println("nom du fichier :"+.value.name);  
     
     	} catch (already_exist ae) {
       // a implémenter
