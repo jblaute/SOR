@@ -24,6 +24,10 @@ public class Serveur {
 		  ////////////////////////////////////////////////////////////////
 			// création de la racine
 			directoryImpl dirImpl = new directoryImpl(poa,"racine");
+			File file = new File("./racine");
+			if (!file.exists()) file.mkdir();
+
+
 		/* fin création de la racine */
 
 		        ////////////////////////////////////////////
@@ -41,6 +45,7 @@ public class Serveur {
 				PrintWriter out = new PrintWriter(new FileOutputStream(refFile));
 				out.println(nameObj);
 				out.close();
+				
 			} catch (IOException ex) {
 				System.err.println("Impossible d'écrire la référence de l'obj corba dans gestiondirectory.ref");
 				System.exit(1);

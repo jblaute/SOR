@@ -3,7 +3,7 @@ package files;
 
 import org.omg.CORBA.*;
 import java.lang.*;
-
+import java.io.*;
 import org.omg.PortableServer.*;
 import java.util.*;
 
@@ -83,10 +83,16 @@ public class directoryImpl extends directoryPOA
 			
 			// création d'un nouveau directory et passage en ref pour le client
 			try{
+				String pathfile = "./"+this.name+"/"+name;
+				System.out.println("chemin "+pathfile);	
 		  	directoryImpl newdir = new directoryImpl(this.poa_, name);
+				newdir.path = pathfile;
 				org.omg.CORBA.Object objc = poa_.servant_to_reference(newdir);
 				directory dir = directoryHelper.narrow(objc);
 				f.value = dir;
+				//ajout du répertoire sur le systeme de fichier
+				File file = new File(pathfile);
+				if (!file.exists()) file.mkdir();	
 				// ajout dans le parent
 				this.listDir.add(dir);
 				this.number_of_file++;
@@ -107,10 +113,11 @@ public class directoryImpl extends directoryPOA
 				//et envoie de la ref au client
 				file_list lf = file_listHelper.narrow(objc);
 				l.value = lf;
-		    return this.number_of_file;	
+		    
 
 		  }catch (Exception e){ System.out.println("POA Exception"+e);
 			} 
+			return this.number_of_file;	
     }
     
 }
