@@ -1,6 +1,6 @@
 
 package files;
-
+ 
 import org.omg.CORBA.*;
 import org.omg.PortableServer.*;
 import java.lang.*;
@@ -10,20 +10,20 @@ import java.util.*;
 
 public class file_listImpl extends file_listPOA{
 
-	private ArrayList<directory> listDir;
-	private ArrayList<regular_file> listReg;
-	private Iterator <directory> itdir;
-	private Iterator <regular_file> itreg;  
+    private ArrayList<directory> listDir;
+    private ArrayList<regular_file> listReg;
+    private Iterator <directory> itdir;
+    private Iterator <regular_file> itreg;  
 
-  public file_listImpl(ArrayList<directory> listDir,ArrayList<regular_file> listReg){
-   	this.listDir = listDir;
-   	this.listReg = listReg;
+    public file_listImpl(ArrayList<directory> listDir,ArrayList<regular_file> listReg){
+       	this.listDir = listDir;
+       	this.listReg = listReg;
 		this.itdir = this.listDir.iterator();
 		this.itreg = this.listReg.iterator();
 		
-  }
+    }
   
-  public boolean next_one(directory_entryHolder e){
+    public boolean next_one(directory_entryHolder e){
 		//s'il reste des répertoires	
 		if(itdir.hasNext()){	
 			directory_entry dentry = new directory_entry(itdir.next().dir_name(),file_type.directory_type);
@@ -38,7 +38,6 @@ public class file_listImpl extends file_listPOA{
 		}
 		return false;
 	}
-
 }
 
 	

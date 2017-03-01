@@ -1,7 +1,7 @@
 
 package files;
 
-import org.omg.CORBA.*;
+import org.omg.CORBA.*; 
 import java.lang.*;
 import java.io.*;
  
@@ -14,12 +14,14 @@ public class regular_fileImpl extends regular_filePOA
 	private FileReader fr;
 	private BufferedReader br;
 	private BufferedWriter bufWriter = null;
-        private FileWriter fileWriter = null;
+    private FileWriter fileWriter = null;
+    private String path;
   
-	public regular_fileImpl(String name){
+	public regular_fileImpl(String name, String monPath){
 		this.name = name;
 		this.file = null;
 		this.offset = 0;
+		this.path = monPath;
 	}
 		
 	public String reg_name(){
@@ -39,48 +41,44 @@ public class regular_fileImpl extends regular_filePOA
 		return this.mode_ouv;
 	}
 
-   public int read(int size, StringHolder data) throws end_of_file,invalid_operation {
-     if(this.mode_ouv.equals(mode.read_only)||this.mode_ouv.equals(mode.read_write)){
-	String texte="";
-	try{
-		for(int compteur=offset;compteur<size+offset;compteur++){
-			texte=texte+(char)br.read();
-		}
-		data.value=texte;
-	}catch(Exception e){
-		throw new end_of_file();
-	}
-     }else{
-     	throw new invalid_operation();
-     }
-      return 0;
-   }
-
-
-//     read_only, write_append, write_trunc, read_write
-
+    public int read(int size, StringHolder data) throws end_of_file,invalid_operation {
+        if(this.mode_ouv.equals(mode.read_only)||this.mode_ouv.equals(mode.read_write)){
+            String texte="";
+            try{
+                for(int compteur=offset;compteur<size+offset;compteur++){
+                    texte=texte+(char)br.read();
+                }
+                data.value=texte;
+            }catch(Exception e){
+                throw new end_of_file();
+            }
+        }else{
+            throw new invalid_operation();
+        }
+        return 0;
+    }
 
     public void ouvrir(mode m){
-	     if(this.mode_ouv.equals(mode.write_append)||this.mode_ouv.equals(mode.write_trunc)||this.mode_ouv.equals(mode.read_write)){
-	     boolean si_append=(this.mode_ouv.equals(mode.write_append) || this.mode_ouv.equals(mode.read_write));
+        if(this.mode_ouv.equals(mode.write_append)||this.mode_ouv.equals(mode.write_trunc)||this.mode_ouv.equals(mode.read_write)){
+            boolean si_append=(this.mode_ouv.equals(mode.write_append) || this.mode_ouv.equals(mode.read_write));
 	     	try{
-		    fileWriter = new FileWriter(this.name, si_append);
-		    bufWriter = new BufferedWriter(fileWriter);
-		}catch(Exception e){
+    		    fileWriter = new FileWriter(this.path+"/"+this.name, si_append);
+    		    System.out.println(this.path+"/"+this.name);
+    		    bufWriter = new BufferedWriter(fileWriter);
+    		}catch(Exception e){
 	            System.err.println(e);
-		}
-	     }else{
+    		}
+        }else{
 	     	try{
-		    fr = new FileReader(this.name);
-		    br = new BufferedReader(fr);
-		}catch(Exception e){
+		        fr = new FileReader(this.name);
+		        br = new BufferedReader(fr);
+		    }catch(Exception e){
 	            System.err.println(e);
-		}
-	     }
+		    }
+	    }
     }
     
     public int write(int size, String data) throws invalid_operation{
-    	
      if(this.mode_ouv.equals(mode.write_append)||this.mode_ouv.equals(mode.write_trunc)||this.mode_ouv.equals(mode.read_write)){
         try {
             bufWriter.write(data);
@@ -94,23 +92,23 @@ public class regular_fileImpl extends regular_filePOA
     }
 
     public void seek(int new_offset) throws invalid_offset,invalid_operation {
-     if(this.mode_ouv.equals(mode.read_only)||this.mode_ouv.equals(mode.read_write)){
-	String s;
-	try{
-		for(int compteur=0;compteur<new_offset;compteur++){
-			br.read();
-		}
-		this.offset=new_offset;
-	}catch(Exception e){
-		throw new invalid_offset();
-	}
-     }else{
-     	throw new invalid_operation();
-     }
+        if(this.mode_ouv.equals(mode.read_only)||this.mode_ouv.equals(mode.read_write)){
+	        String s;
+        	try{
+	        	for(int compteur=0;compteur<new_offset;compteur++){
+	        		br.read();
+	        	}
+	        	this.offset=new_offset;
+	        }catch(Exception e){
+	        	throw new invalid_offset();
+	        }
+        }else{
+         	throw new invalid_operation();
+        }
     }
 
     public void fermer(){
-	     if(this.mode_ouv.equals(mode.write_append)||this.mode_ouv.equals(mode.write_trunc)||this.mode_ouv.equals(mode.read_write)){
+        if(this.mode_ouv.equals(mode.write_append)||this.mode_ouv.equals(mode.write_trunc)||this.mode_ouv.equals(mode.read_write)){
 	     	try{
 	                bufWriter.close();
         	        fileWriter.close();
@@ -118,11 +116,11 @@ public class regular_fileImpl extends regular_filePOA
         		System.err.println(e);
         	}
 	     }else{
-	     	try{
-		    fr.close();
+	        try{
+		        fr.close();
         	}catch(Exception e){
         		System.err.println(e);
         	}
-	     }
+        }
     }
 }

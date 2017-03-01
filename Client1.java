@@ -11,10 +11,14 @@ import java.util.*;
 
 public class Client1 {
   public static void main(String[] args) throws IOException {
+    System.out.println();
+    System.out.println();
+    System.out.println();
     ////////////////////////////////////////////////////
     // On initialise l'ORB
     ////////////////////////////////////////////////////
     ORB orb = ORB.init(args, null);
+    System.out.println("Création de l'ORB : Ok");
 
    /* if (args.length != 1) {
         System.err.println("utilisation : Client nombre");
@@ -36,6 +40,7 @@ public class Client1 {
         BufferedReader br = new BufferedReader(new InputStreamReader(file));
         ior = br.readLine();
         file.close();
+        System.out.println("Récupératon de la référence d'objet du serveur : Ok");
     } catch (IOException ex) {
         System.err.println("Impossible de lire fichier : `" +
             ex.getMessage() + "'");
@@ -64,115 +69,156 @@ public class Client1 {
     ////////////////////////////////////////////////////
     // Test création d'un répertoire
     ////////////////////////////////////////////////////
-  
-    try {
-      // a implémenter
+    System.out.println();
+    System.out.println("Test de création d'un répertoire nommé : MonPremierDir");
 
-			directoryHolder dirHold = new directoryHolder(); 
-      dir.create_directory(dirHold, "MonPremierDir");
-			Thread th = new Thread();
-			//th.sleep(2000);  
- 			System.out.println("nombre  du rep créer"+dir.number_of_file());  
+    try {
+
+        directoryHolder dirHold = new directoryHolder(); 
+        dir.create_directory(dirHold, "MonPremierDir");
+		Thread th = new Thread();
+		//th.sleep(2000);  
+ 		System.out.println("Nombre d'éléments dans le répertoire parent : "+dir.number_of_file());
     
-    } catch (already_exist ae) {
-      // a implémenter
-				System.err.println("répertoire existe déjà");
+    }catch (already_exist ae){
+		System.err.println("Ce répertoire existe déjà");
         System.exit(1);
-			}
-			/*catch (InterruptedException ie){
-				System.err.println("erreur de thread");
-        System.exit(1);
-    	}*/
- 		////////////////////////////////////////////////////
+    }
+
+    System.out.println();
+    System.out.println("Test de création d'un fichier nommé : MonPremierFichier");
+
+ 	////////////////////////////////////////////////////
     // Test création d'un fichier
     ////////////////////////////////////////////////////
-		 try {
-      // a implémenter
-			dir = directoryHelper.narrow(obj);
-			regular_fileHolder regFileHold = new regular_fileHolder(); 
-      dir.create_regular_file(regFileHold, "MonPremierFichier");
-			
- 			System.out.println("nombre  du rep créer"+dir.number_of_file());
-			
-			file_listHolder fl1 = new file_listHolder();
-			
-			
-			
-			directory_entryHolder dr1 = new directory_entryHolder();
-			dr1.value = new directory_entry("",file_type.regular_file_type);
-			int nbe = dir.list_files(fl1);
-			System.out.println("nombre  d'élé : "+nbe);
-			if (fl1.value.next_one(dr1)){
 
-				System.out.println("nom du premier élément : "+dr1.value.name);
-			}
-			//System.out.println("nom du fichier :"+.value.name);  
-    
-    	} catch (already_exist ae) {
-      // a implémenter
-				System.err.println("le fichier existe déjà");
-				
-				
+    try {
+    	dir = directoryHelper.narrow(obj);
+		regular_fileHolder regFileHold = new regular_fileHolder(); 
+        dir.create_regular_file(regFileHold, "MonPremierFichier");
+			
+ 		System.out.println("Nombre d'éléments dans le répertoire parent : "+dir.number_of_file());
+			
+		file_listHolder fl1 = new file_listHolder();
+			
+		directory_entryHolder dr1 = new directory_entryHolder();
+		dr1.value = new directory_entry("",file_type.regular_file_type);
+		int nbe = dir.list_files(fl1);
+		if (fl1.value.next_one(dr1)){
+			System.out.println("Nom du premier élément : "+dr1.value.name);
+		}
+   	} catch (already_exist ae) {
+		System.err.println("le fichier existe déjà");
         System.exit(1);
-			}
+	}
     
+    System.out.println();
+	System.out.println("On tente d'ouvrir un fichier existant : MonPremierFichier en mode lecture");
+
 	//////////////////////////////////////////			
 	// Test d'ouverture d'un fichier existant en mode read/write
 	//////////////////////////////////////////
-	System.out.println("On tente d'ouvrir un fichier existant : MonPremierFichier");
+
+	regular_fileHolder openedFileHold = new regular_fileHolder();
 	try{
-		regular_fileHolder openedFileHold = new regular_fileHolder();
-		dir.open_regular_file(openedFileHold, "MonPremierFichier", mode.read_write);
+		dir.open_regular_file(openedFileHold, "MonPremierFichier", mode.read_only);
+		System.out.println("fichier "+openedFileHold.value.reg_name()+" ouvert en mode lecture");
+	}catch(Exception e){
+		System.out.println(e);
+	}
+	try{
+	    System.out.println("On tente d'écrire quelques caractères : Vive corba !");
+	    openedFileHold.value.write(12,"Vive corba !");
+	}catch(Exception e){
+		System.out.println(e);
+        System.out.println("Et cela ne fonctionnes pas... (ouf !)");
+	}
+   	System.out.println("On referme le fichier, et on tente de l'ouvrir mode write_trunc");
+   	try{
+        openedFileHold.value.fermer();
+	}catch(Exception e){
+		System.out.println(e);
+	}
+
+	try{
+		dir.open_regular_file(openedFileHold, "MonPremierFichier", mode.write_trunc);
 		System.out.println("fichier "+openedFileHold.value.reg_name()+" ouvert");
 	}catch(Exception e){
 		System.out.println(e);
 	}
-
+	System.out.println("On tente d'écrire quelques caractères : je suis content");
 	try{
-		regular_fileHolder openedFileHold_again = new regular_fileHolder();
-		dir.open_regular_file(openedFileHold_again, "MonPremierFichier", mode.read_write);
-		System.out.println("fichier "+openedFileHold_again.value.reg_name()+" ouvert");
-
-		System.out.println("On tente d'écrire quelques caractères : je suis content");
-		openedFileHold_again.value.write(15,"je suis content");
-		System.out.println("On ferme le fichier pour ensuite le réouvrir en lecture");
-		openedFileHold_again.value.fermer();
-		dir.open_regular_file(openedFileHold_again, "MonPremierFichier", mode.read_only);
-		System.out.println("On se déplace de 5 caractères");
-		openedFileHold_again.value.seek(5);
-		System.out.println("On lit le 5 prochain caractères (resultat attendu : 'is co')");
-		StringHolder texteHold=new StringHolder();
-		texteHold.value=new String();
-		openedFileHold_again.value.read(5,texteHold);
-		System.out.println("texte obtenu : "+texteHold.value);
-
+    	openedFileHold.value.write(15,"je suis content");
 	}catch(Exception e){
 		System.out.println(e);
 	}
 
+	System.out.println("et on tente de le lire :");
+	StringHolder texteHold1=new StringHolder();
+	texteHold1.value=new String();
 
-	
-	
-	
+	try{
+    	openedFileHold.value.read(5,texteHold1);
+	}catch(Exception e){
+		System.out.println(e);
+    	System.out.println("Et cela ne fonctionnes pas... (décidément...)");
+	}
+    System.out.println();
+	System.out.println("On ferme le fichier pour ensuite le réouvrir en lecture seule");
+
+   	try{
+        openedFileHold.value.fermer();
+	}catch(Exception e){
+		System.out.println(e);
+	}
+	try{
+		dir.open_regular_file(openedFileHold, "MonPremierFichier", mode.read_only);
+		System.out.println("fichier "+openedFileHold.value.reg_name()+" ouvert");
+	}catch(Exception e){
+		System.out.println(e);
+	}
+    System.out.println();
+	System.out.println("On se déplace de 5 caractères");
+   	try{
+		openedFileHold.value.seek(5);
+	}catch(Exception e){
+		System.out.println(e);
+	}
+    System.out.println();
+	System.out.println("On lit le 5 prochain caractères (resultat attendu : 'is co')");
+	StringHolder texteHold=new StringHolder();
+	texteHold.value=new String();
+   	try{
+    	openedFileHold.value.read(5,texteHold);
+		System.out.println("texte obtenu : "+texteHold.value);
+		System.out.println("\\o/ youpi !");
+	}catch(Exception e){
+		System.out.println(e);
+	}
+   	try{
+        openedFileHold.value.fermer();
+	}catch(Exception e){
+		System.out.println(e);
+	}
+    
 	
 	////////////////////////////////////////////			
 	// Test d'ouverture d'un fichier inexistant
 	////////////////////////////////////////////
-	System.out.println("On tente de récuperer un fichier inexistant : MonSecondFichier");
+	System.out.println("On tente maintenant d'ouvrir un fichier inexistant : MonSecondFichier");
 	try{
-		regular_fileHolder openedFileHold2 = new regular_fileHolder();
-		dir.open_regular_file(openedFileHold2, "MonSecondFichier", mode.read_only);
-		System.out.println("Nom du fichier récupéré : "+openedFileHold2.value.reg_name());
+		dir.open_regular_file(openedFileHold, "MonSecondFichier", mode.read_only);
 	}catch(Exception e){
 		System.out.println(e);
+		System.out.println("Et comme dirait un étudiant compilant son premier CORBA : 'Ca marche pas !'");
 	}
 	
 	/////////////////////////////////////////////			
 	// Test d'ouverture d'un repertoire existant
 	/////////////////////////////////////////////
-	System.out.println("On tente de récuperer un répertoire existant : MonPremierDir");
+	System.out.println("On tente d'ouvrir un répertoire existant : MonPremierDir");
+	directoryHolder createdDirHold = new directoryHolder();
 	try{
-		directoryHolder createdDirHold = new directoryHolder();
 		dir.open_directory(createdDirHold, "MonPremierDir");
 		System.out.println("Nom du dossier récupéré : "+createdDirHold.value.dir_name());
 	}catch(Exception e){
@@ -182,16 +228,36 @@ public class Client1 {
 	///////////////////////////////////////////////			
 	// Test d'ouverture d'un repertoire inexistant
 	///////////////////////////////////////////////
-	System.out.println("On tente de récuperer un répertoire existant : MonSecondDir");
+	System.out.println("On tente d'ouvrir un répertoire inexistant : MonSecondDir");
 	try{
-		directoryHolder createdDirHold2 = new directoryHolder();
-		dir.open_directory(createdDirHold2, "MonSecondDir");
-		System.out.println("Nom du dossier récupéré : "+createdDirHold2.value.dir_name());
+		dir.open_directory(createdDirHold, "MonSecondDir");
+		System.out.println("Nom du dossier récupéré : "+createdDirHold.value.dir_name());
+	}catch(Exception e){
+		System.out.println(e);
+		System.out.println("Raspe et gaspe ! : 'Ca marche pas !'");
+	}
+
+
+	System.out.println("Petit état des lieux :");
+	
+	///////////////////////////////////////////////			
+	// Test de suppression d'un fichier
+	///////////////////////////////////////////////
+	System.out.println("On tente de supprimer un fichier: MonSecondFichier");
+	try{
+		dir.delete_file("MonSecondFichier");
 	}catch(Exception e){
 		System.out.println(e);
 	}
-	
-	
-    System.exit(0);
+	System.out.println("On tente de l'ouvrir, histoire de voir...");
+	//on l'ouvre et on attend le renvoie de l'exception il n'existe pas
+	try{
+		dir.open_regular_file(openedFileHold, "MonSecondFichier", mode.read_only);
+		System.out.println("Ca marche !'");
+	}catch(Exception e){
+		System.out.println(e);
+		System.out.println("Décidement... : 'Ca marche pas !'");
+	}
+  System.exit(0);
   }
 }

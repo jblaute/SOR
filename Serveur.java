@@ -4,7 +4,7 @@ import org.omg.PortableServer.*;
 import java.io.*;
 import java.lang.*;
 import java.util.*;
-
+ 
 public class Serveur {
   public static void main(String[] args) throws IOException {
 		////////////////////////////////////////
@@ -23,7 +23,7 @@ public class Serveur {
 		  // l'implementation de l'objet
 		  ////////////////////////////////////////////////////////////////
 			// création de la racine
-			directoryImpl dirImpl = new directoryImpl(poa,"racine");
+			directoryImpl dirImpl = new directoryImpl(poa,"racine","./racine");
 			File file = new File("./racine");
 			if (!file.exists()) file.mkdir();
 
